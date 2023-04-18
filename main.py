@@ -1,10 +1,9 @@
 import argparse
-from argparse import Namespace
+import random
 from tweetipy import Tweetipy
 from json import load
-import random
 
-def parseArgs() -> Namespace:
+def parseArgs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog='Twitter bot: @babotsonicos',
         description="Picks a random Babaosnicos' song and tweets a random phrase from it.",
