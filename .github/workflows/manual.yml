@@ -8,6 +8,8 @@ on:
         default: ''
         required: false
         type: string
+  schedule:
+  - cron: "0 */3 * * *"
 
 jobs:
   # Single job, post the tweet.
