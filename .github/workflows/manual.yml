@@ -1,15 +1,8 @@
 name: Post tweet
 
 on:
-  workflow_dispatch:
-    inputs:
-      text:
-        description: 'Text to tweet (if empty, a random text from phrases.json will be chosen).'
-        default: ''
-        required: false
-        type: string
   schedule:
-  - cron: "0 */3 * * *"
+  - cron: "12 */3 * * "
 
 jobs:
   # Single job, post the tweet.
@@ -24,4 +17,4 @@ jobs:
     - name: Install requirements
       run: pip install -r requirements.txt
     - name: Run main script
-      run: python3 main.py --api_key "${{ secrets.API_KEY }}" --api_secret "${{ secrets.API_SECRET }}" --oauth_key "${{ secrets.OAUTH_KEY }}" --oauth_secret "${{ secrets.OAUTH_SECRET }}" --text "${{ inputs.text }}"
+      run: python3 main.py --api_key "${{ secrets.API_KEY }}" --api_secret "${{ secrets.API_SECRET }}" --oauth_key "${{ secrets.OAUTH_KEY }}" --oauth_secret "${{ secrets.OAUTH_SECRET }}"
