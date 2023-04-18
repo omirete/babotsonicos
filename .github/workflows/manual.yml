@@ -1,0 +1,19 @@
+name: Post tweet
+
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: 'Text to tweet (if empty, a random text from phrases.json will be chosen).'
+        required: false
+        type: string
+
+jobs:
+  # Single job, post the tweet.
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install requirements
+      run: python3 -m pip install -r requirements.txt
+    - name: Run main script
+      run: python3 -m .\main.py --api_key "${{ secrets.API_KEY }}" --api_secret "${{ secrets.API_SECRET }}" --oauth_key "${{ secrets.OAUTH_KEY }}" --oauth_secret "${{ secrets.OAUTH_SECRET }}"
