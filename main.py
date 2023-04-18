@@ -35,7 +35,7 @@ def postTweet(api_key: str, api_secret: str, oauth_key: str, oauth_secret: str, 
         oauth_token_secret=oauth_secret
     )
     
-    phrase = text if text != None else getRandomText()
+    phrase = text if (text != None and text != "") else getRandomText()
     API.tweets.write(phrase)
 
 def main():
