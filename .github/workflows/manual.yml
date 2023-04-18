@@ -22,4 +22,4 @@ jobs:
     - name: Install requirements
       run: pip install -r requirements.txt
     - name: Run main script
-      run: python3 -m .\main.py --api_key "${{ secrets.API_KEY }}" --api_secret "${{ secrets.API_SECRET }}" --oauth_key "${{ secrets.OAUTH_KEY }}" --oauth_secret "${{ secrets.OAUTH_SECRET }}" --text "${{ inputs.text }}"
+      run: python3 .\main.py --api_key "${{ secrets.API_KEY }}" --api_secret "${{ secrets.API_SECRET }}" --oauth_key "${{ secrets.OAUTH_KEY }}" --oauth_secret "${{ secrets.OAUTH_SECRET }}" --text "${{ inputs.text }}"
