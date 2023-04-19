@@ -2,7 +2,7 @@
 
 This is the code used to run the [@babotsonicos](https://twitter.com/babotsonicos) bot account in Twitter.
 
-The `phrases.json` contains a list of songs (w/ lyrics) from [Babasonicos](https://www.babasonicos.com/) (an argentinian music group).
+The [`phrases.json`](https://github.com/omirete/babotsonicos/blob/master/phrases.json) file contains a list of songs (w/ lyrics) from [Babasonicos](https://www.babasonicos.com/) (an argentinian music group).
 
 ## 🤖 What does the bot do?
 It tweets a random lyric phrase from the Babasonicos band every three hours.
