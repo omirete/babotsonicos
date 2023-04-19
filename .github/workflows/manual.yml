@@ -2,6 +2,7 @@ name: Post tweet
 
 on:
   schedule:
+  # Runs every 3 hours, at the 12th minute (so at 00:12, 03:12, 06:12, etc...)
   - cron: "12 */3 * * *"
 
 jobs:
