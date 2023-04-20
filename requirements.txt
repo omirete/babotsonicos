@@ -1,1 +1,1 @@
-tweetipy==0.1.8
+tweetipy==0.1.9
