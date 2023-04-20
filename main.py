@@ -1,7 +1,6 @@
 import argparse
-import random
 from tweetipy import Tweetipy
-from json import load
+from helpers.get_random_text import getRandomText
 
 def parseArgs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -16,14 +15,6 @@ def parseArgs() -> argparse.Namespace:
     parser.add_argument('--text', required=False)
 
     return parser.parse_args()
-
-def getRandomText() -> str:
-    with open('phrases.json', 'r', encoding='utf-8') as f:
-        phrases: dict = load(f)
-        songs = list(phrases.keys())
-        song = random.choice(songs)
-        phrase = random.choice(phrases[song])
-        return phrase
 
 def postTweet(api_key: str, api_secret: str, oauth_key: str, oauth_secret: str, text: str = None):
 
@@ -41,4 +32,5 @@ def main():
     args = parseArgs()
     postTweet(**vars(args))
 
-main()
+if __name__ == "__main__":
+    main()
