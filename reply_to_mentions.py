@@ -33,7 +33,7 @@ def log(text: str):
 def read_last_id() -> Union[str, None]:
     try:
         with open('last_id', 'r', encoding='utf-8') as f:
-            return f.read()
+            return f.read().strip().strip('\n')
     except FileNotFoundError:
         return None
 
