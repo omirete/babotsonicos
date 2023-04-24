@@ -4,11 +4,19 @@ from tweetipy import Tweetipy
 from tweetipy.helpers import QueryBuilder
 from helpers.get_random_text import getRandomText
 from time import sleep
+from datetime import datetime
+
+def log_error(text: str):
+    now = datetime.now().isoformat()
+    log_exists = os.path.exists('error_log')
+    with open('error_log', "a" if log_exists else "w", encoding='utf-8') as log:
+        log.write(f"{now}:\t{text}\n")
 
 def log(text: str):
+    now = datetime.now().isoformat()
     log_exists = os.path.exists('log')
     with open('log', "a" if log_exists else "w", encoding='utf-8') as log:
-        log.write(text)
+        log.write(f"{now}:\t{text}\n")
 
 def read_last_id() -> Union[str, None]:
     try:
@@ -60,8 +68,9 @@ def main():
             id_of_last_tweet_replied_to = t.id
         except Exception as e:
             # Log error
-            log(str(e))
+            log_error(str(e))
             break
+        log(f'Wrote reply to tweet id: {t.id}')
 
     write_last_id(id_of_last_tweet_replied_to)
 
