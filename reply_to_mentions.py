@@ -5,6 +5,7 @@ from tweetipy.helpers import QueryBuilder
 from helpers.get_random_text import getRandomText
 from time import sleep
 from datetime import datetime
+from dotenv import load_dotenv
 
 def log_error(text: str):
     now = datetime.now().isoformat()
@@ -79,4 +80,5 @@ def main():
     write_last_id(id_of_last_tweet_replied_to)
 
 if __name__ == "__main__":
+    load_dotenv()
     main()
