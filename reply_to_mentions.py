@@ -1,3 +1,4 @@
+import argparse
 import os
 from typing import Union
 from tweetipy import Tweetipy
@@ -6,6 +7,16 @@ from helpers.get_random_text import getRandomText
 from time import sleep
 from datetime import datetime
 from dotenv import load_dotenv
+
+def parseArgs() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        prog='Twitter bot: @babotsonicos',
+        description="Picks a random Babaosnicos' song and tweets a random phrase from it.",
+        epilog='For questions, reach out to the developer (GitHub user: /omirete).')
+
+    parser.add_argument("-d", '--debug', required=False, action="store_true")
+
+    return parser.parse_args()
 
 def log_error(text: str):
     now = datetime.now().isoformat()
@@ -32,6 +43,10 @@ def write_last_id(id: str):
             f.write(id)
 
 def main():
+
+    args = parseArgs()
+    debug: bool = args.debug
+
     api_key_me = os.getenv("API_KEY_ME")
     api_secret_me = os.getenv("API_SECRET_ME")
     oauth_key_me = os.getenv("OAUTH_KEY_ME")
@@ -63,6 +78,8 @@ def main():
     # script.
     for i in range(20):
         t = tweets[i]
+        if debug:
+            print(t)
         try:
             phrase = getRandomText()
             # Let's try to be good web citizens and wait at least five seconds
