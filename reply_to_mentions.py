@@ -52,18 +52,22 @@ def main():
         & q.has.mentions,
         since_id=id_of_last_tweet_replied_to,
         sort_order='recency',
-        max_results=50
+        max_results=100
     )
+    # Sort retrieved tweets from oldest to newest
     tweets.sort(key=lambda t: t.id) # Works in-place and returns None.
 
-    for t in tweets:
-        # print(t)
+    # Only work on the first 20 tweets, to avoid getting throttled by Twitter.
+    # If there are more than 20, they will be answered in the next run of the
+    # script.
+    for i in range(20):
+        t = tweets[i]
         try:
             phrase = getRandomText()
-            # Let's try to be good web citizens and wait at least three seconds
+            # Let's try to be good web citizens and wait at least one minute
             # between each call to the API so we don't hit too hard on Twitter's
             # servers. This is also helpful if we want to avoid being banned. 😅
-            sleep(3)
+            sleep(60)
             API.tweets.write(phrase, in_reply_to_tweet_id=t.id)
             id_of_last_tweet_replied_to = t.id
         except Exception as e:
