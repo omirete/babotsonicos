@@ -76,7 +76,7 @@ def main():
     # Only work on the first 20 tweets, to avoid getting throttled by Twitter.
     # If there are more than 20, they will be answered in the next run of the
     # script.
-    for i in range(20):
+    for i in range(10):
         t = tweets[i]
         if debug:
             print(t)
