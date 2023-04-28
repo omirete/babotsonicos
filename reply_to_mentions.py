@@ -82,12 +82,12 @@ def main():
             print(t)
         try:
             phrase = getRandomText()
-            # Let's try to be good web citizens and wait at least five seconds
+            # Let's try to be good web citizens and wait at least three minutes
             # between each call to the API so we don't hit too hard on Twitter's
             # servers. This is also helpful if we want to avoid being banned. 😅
             API.tweets.write(phrase, in_reply_to_tweet_id=t.id)
             id_of_last_tweet_replied_to = t.id
-            sleep(5)
+            sleep(60*3)
         except Exception as e:
             # Log error
             log_error(str(e))
