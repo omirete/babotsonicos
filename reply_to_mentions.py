@@ -73,8 +73,8 @@ def main():
     # Sort retrieved tweets from oldest to newest
     tweets.sort(key=lambda t: t.id) # Works in-place and returns None.
 
-    # Only work on the first 20 tweets, to avoid getting throttled by Twitter.
-    # If there are more than 20, they will be answered in the next run of the
+    # Only work on the first 10 tweets, to avoid getting throttled by Twitter.
+    # If there are more than 10, they will be answered in the next run of the
     # script.
     for i in range(10):
         t = tweets[i]
